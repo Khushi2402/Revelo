@@ -5,14 +5,12 @@ export const layoutConfig = {
         name: "Header",
         style: {
           height: "100%",
-          backgroundColor: "#f0f0f0",
         },
       },
       {
         name: "Dropdown",
         style: {
           height: "100%",
-          backgroundColor: "#c9ffd8",
         },
       },
     ],

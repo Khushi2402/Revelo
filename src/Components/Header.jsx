@@ -87,25 +87,6 @@ const Header = () => {
             </div>
           </div>
         </Disclosure>
-
-        <header className="bg-white shadow">
-          <div className="mx-auto px-4 py-4">
-            <Dropdown />
-          </div>
-        </header>
-        <main>
-          <div className="mx-auto flex flex-row py-2">
-            {/* <div className="w-1/8">
-              <Sidebar />
-            </div>
-            <div className="flex-1 ">
-              <MapComponent />
-            </div>
-            <div className="w-1/8 ml-auto">
-              <Toolbar />
-            </div> */}
-          </div>
-        </main>
       </div>
     </>
   );
