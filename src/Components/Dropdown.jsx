@@ -2,8 +2,8 @@ import React from 'react'
 
 const Dropdown = () => {
   return (
-    <div>Dropdown</div>
+    <div className='font-bold'>Dropdown</div>
   )
 }
 
-export default Dropdown
+export default Dropdown;
