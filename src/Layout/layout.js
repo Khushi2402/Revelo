@@ -25,14 +25,12 @@ export const layoutConfig = {
         name: "SidebarTop",
         style: {
           height: "100%",
-          backgroundColor: "#E6FBFF",
         },
       },
       {
         name: "SidebarBottom",
         style: {
           height: "100%",
-          backgroundColor: "#D7F9FF ",
         },
       },
     ],
