@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Map, View } from "ol";
 import "ol/ol.css";
 import { fromLonLat } from "ol/proj";
@@ -11,10 +11,14 @@ import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
 import './map.css';
 
-const MapComp = () => {
+const MapComp = ({ coordinates }) => {
+  const mapRef = useRef(null);
+
   useEffect(() => {
+    if (!mapRef.current) return;
+
     const mapObj = new Map({
-      target: "map",
+      target: mapRef.current,
       view: new View({
         center: fromLonLat([79.0882, 21.1458]),
         zoom: 16,
@@ -30,18 +34,7 @@ const MapComp = () => {
     });
 
     const vectorSource = new VectorSource({
-      features: [
-        new Feature({
-          geometry: new Point(fromLonLat([79.0882, 21.1458])),
-          name: "Starbucks Dongja",
-          style: new Style({
-            image: new Icon({
-              anchor: [0.5, 1],
-              src: "https://openlayers.org/en/latest/examples/data/icon.png",
-            }),
-          }),
-        }),
-      ],
+      features: []
     });
 
     const vectorLayer = new VectorLayer({
@@ -49,6 +42,23 @@ const MapComp = () => {
     });
 
     mapObj.addLayer(vectorLayer);
+
+    if (coordinates) {
+      const feature = new Feature({
+        geometry: new Point(fromLonLat(coordinates)),
+        name: "Selected Location",
+        style: new Style({
+          image: new Icon({
+            anchor: [0.5, 1],
+            src: "https://openlayers.org/en/latest/examples/data/icon.png",
+          }),
+        }),
+      });
+
+      vectorSource.clear(); // Clear existing features
+      vectorSource.addFeature(feature);
+      mapObj.getView().setCenter(fromLonLat(coordinates));
+    }
 
     mapObj.on("click", (evt) => {
       const feature = mapObj.forEachFeatureAtPixel(evt.pixel, (feature) => {
@@ -60,13 +70,15 @@ const MapComp = () => {
       }
     });
 
-    return () => mapObj.setTarget("");
-  }, []);
+    return () => {
+      if (mapObj) {
+        mapObj.setTarget(null);
+      }
+    };
+  }, [coordinates]);
 
   return (
-    <div className="mx-auto flex flex-row py-2">
-      <div className="map" id="map" />
-    </div>
+    <div ref={mapRef} className="mx-auto flex flex-row py-2 map" id="map" />
   );
 };
 
