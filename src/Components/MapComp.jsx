@@ -63,7 +63,11 @@ const MapComp = () => {
     return () => mapObj.setTarget("");
   }, []);
 
-  return <div className="map" id="map" />;
+  return (
+    <div className="mx-auto flex flex-row py-2">
+      <div className="map" id="map" />
+    </div>
+  );
 };
 
 export default MapComp;
