@@ -61,14 +61,12 @@ export const layoutConfig = {
         name: "ToolbarTop",
         style: {
           height: "100%",
-          backgroundColor: "#c8ffa1",
         },
       },
       {
         name: "ToolbarBottom",
         style: {
           height: "100%",
-          backgroundColor: "#c9ffd8",
         },
       },
     ],
