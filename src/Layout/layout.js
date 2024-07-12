@@ -4,31 +4,21 @@ export const layoutConfig = {
       {
         name: "Header",
         style: {
-          width: "100%",
           height: "100%",
           backgroundColor: "#f0f0f0",
         },
       },
-    ],
-    style: {
-      width: "100%",
-      height: "10%",
-    },
-  },
-  dropdown: {
-    component: [
       {
         name: "Dropdown",
         style: {
-          width: "100%",
           height: "100%",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#c9ffd8",
         },
       },
     ],
     style: {
       width: "100%",
-      height: "10%",
+      height: "100%",
     },
   },
   lhs: {
@@ -36,20 +26,20 @@ export const layoutConfig = {
       {
         name: "SidebarTop",
         style: {
-          height: "50%",
-          backgroundColor: "#f0f0f0",
+          height: "100%",
+          backgroundColor: "#E6FBFF",
         },
       },
       {
         name: "SidebarBottom",
         style: {
-          height: "50%",
-          backgroundColor: "#f0f0f0",
+          height: "100%",
+          backgroundColor: "#D7F9FF ",
         },
       },
     ],
     style: {
-      width: "10%",
+      width: "3%",
       height: "100%",
     },
   },
@@ -65,7 +55,7 @@ export const layoutConfig = {
       },
     ],
     style: {
-      width: "80%",
+      width: "94%",
       height: "100%",
     },
   },
@@ -74,22 +64,20 @@ export const layoutConfig = {
       {
         name: "ToolbarTop",
         style: {
-          width: "100%",
           height: "100%",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#c8ffa1",
         },
       },
       {
         name: "ToolbarBottom",
         style: {
-          width: "100%",
           height: "100%",
-          backgroundColor: "#f0f0f0",
+          backgroundColor: "#c9ffd8",
         },
       },
     ],
     style: {
-      width: "10%",
+      width: "3%",
       height: "100%",
     },
   },
