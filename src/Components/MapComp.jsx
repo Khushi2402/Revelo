@@ -11,7 +11,7 @@ import Feature from "ol/Feature";
 import Point from "ol/geom/Point";
 import './map.css';
 
-const MapComp = ({ coordinates }) => {
+const MapComp = ({ coordinates, className }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const MapComp = ({ coordinates }) => {
   }, [coordinates]);
 
   return (
-    <div ref={mapRef} className="mx-auto flex flex-row py-2 map" id="map" />
+    <div ref={mapRef} className={`mx-auto flex flex-row py-2 map ${className}`} id="map" />
   );
 };
 

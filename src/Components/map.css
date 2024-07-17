@@ -2,5 +2,12 @@
     position: absolute;
     top: 14vh;
     bottom: 0;
+}
+
+.map-closed {
     width: 94%;
+}
+
+.map-open {
+    width: 82%;
 }
