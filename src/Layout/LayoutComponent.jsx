@@ -22,10 +22,20 @@ const componentMap = {
 const LayoutComponent = () => {
   const [coordinates, setCoordinates] = useState([79.0882, 21.1458]); // Default to Nagpur coordinates
   const [isTabOpen, setIsTabOpen] = useState(false);
+  const [tabs, setTabs] = useState([]);
+  const [activeTab, setActiveTab] = useState('');
 
-  const handleIconClick = () => {
-    setIsTabOpen(!isTabOpen);
+  const handleIconClick = (tabName) => {
+    if (!tabs.find((tab) => tab.name === tabName)) {
+      setTabs([...tabs, {name: tabName, content: renderComponent(tabName)}]);
+    }
+    setActiveTab(tabName);
+    setIsTabOpen(true);
   };
+
+  const handleTabChange = (tabName) => {
+    setActiveTab(tabName);
+  }
 
   const layoutConfig = {
     ...initialConfig,
@@ -126,11 +136,11 @@ const LayoutComponent = () => {
             flexDirection: "column",
           }}
         >
-          {layoutConfig.tab.component.map((item, index) => (
-            <div key={index} style={item.style}>
-              {renderComponent(item.name)}
-            </div>
-          ))}
+          <Tab 
+          tabs={tabs}
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+          />
         </div>
 
         {/* center */}
@@ -144,7 +154,7 @@ const LayoutComponent = () => {
         >
           {/* MapComp directly rendered here with coordinates prop */}
           <div style={{ flex: 1, width: "100%", height: "100%" }}>
-            <MapComp coordinates={coordinates} />
+            <MapComp coordinates={coordinates} className={isTabOpen ? "map-open" : "map-closed"}/>
           </div>
           {layoutConfig.center.component.map((item, index) => (
             <div key={index} style={item.style}>

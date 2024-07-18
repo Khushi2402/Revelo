@@ -1,0 +1,28 @@
+.tab-container {
+    display: flex;
+    height: 100%;
+}
+
+.tab-content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-buttons button {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tab-buttons .active {
+    background-color: #eee;
+}
+
+.tab-content.active {
+    display: block;
+}
