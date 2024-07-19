@@ -6,6 +6,11 @@
 .tab-content {
     flex: 1;
     overflow: hidden;
+    display: none; /* Ensure non-active tabs are hidden */
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .tab-buttons {
@@ -13,16 +18,27 @@
     border-bottom: 1px solid #ddd;
 }
 
+.tab-header {
+    display: flex;
+    align-items: center;
+}
+
 .tab-buttons button {
     flex: 1;
     padding: 10px;
     cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 .tab-buttons .active {
     background-color: #eee;
 }
 
-.tab-content.active {
-    display: block;
+.close-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: 5px;
 }

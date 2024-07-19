@@ -23,11 +23,11 @@ const LayoutComponent = () => {
   const [coordinates, setCoordinates] = useState([79.0882, 21.1458]); // Default to Nagpur coordinates
   const [isTabOpen, setIsTabOpen] = useState(false);
   const [tabs, setTabs] = useState([]);
-  const [activeTab, setActiveTab] = useState('');
+  const [activeTab, setActiveTab] = useState("");
 
   const handleIconClick = (tabName) => {
     if (!tabs.find((tab) => tab.name === tabName)) {
-      setTabs([...tabs, {name: tabName, content: renderComponent(tabName)}]);
+      setTabs([...tabs, { name: tabName, content: renderComponent(tabName) }]);
     }
     setActiveTab(tabName);
     setIsTabOpen(true);
@@ -35,7 +35,18 @@ const LayoutComponent = () => {
 
   const handleTabChange = (tabName) => {
     setActiveTab(tabName);
-  }
+  };
+
+  const handleTabClose = (tabName) => {
+    const updatedTabs = tabs.filter((tab) => tab.name !== tabName);
+    setTabs(updatedTabs);
+
+    if (updatedTabs.length === 0) {
+      setIsTabOpen(false);
+    } else if (activeTab === tabName) {
+      setActiveTab(updatedTabs[0].name);
+    }
+  };
 
   const layoutConfig = {
     ...initialConfig,
@@ -136,10 +147,11 @@ const LayoutComponent = () => {
             flexDirection: "column",
           }}
         >
-          <Tab 
-          tabs={tabs}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
+          <Tab
+            tabs={tabs}
+            activeTab={activeTab}
+            onTabChange={handleTabChange}
+            onTabClose={handleTabClose}
           />
         </div>
 
@@ -154,7 +166,10 @@ const LayoutComponent = () => {
         >
           {/* MapComp directly rendered here with coordinates prop */}
           <div style={{ flex: 1, width: "100%", height: "100%" }}>
-            <MapComp coordinates={coordinates} className={isTabOpen ? "map-open" : "map-closed"}/>
+            <MapComp
+              coordinates={coordinates}
+              className={isTabOpen ? "map-open" : "map-closed"}
+            />
           </div>
           {layoutConfig.center.component.map((item, index) => (
             <div key={index} style={item.style}>
