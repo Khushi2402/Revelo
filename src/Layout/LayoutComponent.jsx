@@ -8,6 +8,8 @@ import MapComp from "../Components/MapComp";
 import ToolbarTop from "../Components/ToolbarTop";
 import ToolbarBottom from "../Components/ToolbarBottom";
 import Tab from "../Components/Tab";
+import LayerTab from "../Components/LayerTab";
+import BasemapTab from "../Components/BasemapTab";
 
 const componentMap = {
   Header: Header,
@@ -17,6 +19,8 @@ const componentMap = {
   ToolbarTop: ToolbarTop,
   ToolbarBottom: ToolbarBottom,
   Tab: Tab,
+  LayerTab: LayerTab,
+  BasemapTab: BasemapTab,
 };
 
 const LayoutComponent = () => {
@@ -47,6 +51,33 @@ const LayoutComponent = () => {
       setActiveTab(updatedTabs[0].name);
     }
   };
+
+  const renderTabs = () => {
+    return (
+      <div className="tabs">
+        {tabs.map((tab) => (
+          <button
+          key={tab.name}
+          className={`tab ${activeTab === tab.name ? 'active' : ''}`}
+          onClick={() => handleTabChange(tab.name)}
+          >
+            {tab.name}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'Layer' :
+        return <LayerTab />;
+      case 'Basemap' :
+        return <BasemapTab />;
+      default:
+        return null;
+    }
+  }
 
   const layoutConfig = {
     ...initialConfig,
