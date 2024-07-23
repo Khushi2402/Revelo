@@ -1,6 +1,6 @@
 import React from "react";
 
-const BasemapTab = () => {
+const BookmarkTab = () => {
   return (
     <div>
       <fieldset>
@@ -21,7 +21,7 @@ const BasemapTab = () => {
             </div>
 
             <div>
-              <strong className="font-medium text-gray-900"> Basemap 1 </strong>
+              <strong className="font-medium text-gray-900"> Bookmark 1 </strong>
             </div>
           </label>
 
@@ -39,7 +39,7 @@ const BasemapTab = () => {
             </div>
 
             <div>
-              <strong className="font-medium text-gray-900"> Basemap 2 </strong>
+              <strong className="font-medium text-gray-900"> Bookmark 2 </strong>
             </div>
           </label>
 
@@ -57,7 +57,7 @@ const BasemapTab = () => {
             </div>
 
             <div>
-              <strong className="font-medium text-gray-900"> Basemap 3 </strong>
+              <strong className="font-medium text-gray-900"> Bookmark 3 </strong>
             </div>
           </label>
         </div>
@@ -66,4 +66,4 @@ const BasemapTab = () => {
   );
 };
 
-export default BasemapTab;
+export default BookmarkTab;
